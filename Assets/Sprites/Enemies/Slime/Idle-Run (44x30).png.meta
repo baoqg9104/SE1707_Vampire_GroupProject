@@ -130,10 +130,10 @@ TextureImporter:
       name: Idle-Run (44x30)_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 40
-        height: 27
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +152,10 @@ TextureImporter:
       name: Idle-Run (44x30)_1
       rect:
         serializedVersion: 2
-        x: 45
+        x: 44
         y: 0
-        width: 42
-        height: 26
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,7 +177,7 @@ TextureImporter:
         x: 88
         y: 0
         width: 44
-        height: 24
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,7 @@ TextureImporter:
         x: 132
         y: 0
         width: 44
-        height: 24
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: Idle-Run (44x30)_4
       rect:
         serializedVersion: 2
-        x: 177
+        x: 176
         y: 0
-        width: 42
-        height: 25
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: Idle-Run (44x30)_5
       rect:
         serializedVersion: 2
-        x: 222
+        x: 220
         y: 0
-        width: 40
-        height: 27
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +262,10 @@ TextureImporter:
       name: Idle-Run (44x30)_6
       rect:
         serializedVersion: 2
-        x: 267
+        x: 264
         y: 0
-        width: 38
-        height: 29
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,9 +284,9 @@ TextureImporter:
       name: Idle-Run (44x30)_7
       rect:
         serializedVersion: 2
-        x: 312
+        x: 308
         y: 0
-        width: 36
+        width: 44
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -306,9 +306,9 @@ TextureImporter:
       name: Idle-Run (44x30)_8
       rect:
         serializedVersion: 2
-        x: 356
+        x: 352
         y: 0
-        width: 36
+        width: 44
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: Idle-Run (44x30)_9
       rect:
         serializedVersion: 2
-        x: 399
+        x: 396
         y: 0
-        width: 38
-        height: 29
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,7 +350,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f9ff4831ed780da42aa4ed6bc3ff18c4
     internalID: 0
     vertices: []
     indices: 

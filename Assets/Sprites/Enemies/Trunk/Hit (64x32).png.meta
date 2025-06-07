@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,10 +115,10 @@ TextureImporter:
       name: Hit (64x32)_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 0
         y: 0
-        width: 42
-        height: 25
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,10 +137,10 @@ TextureImporter:
       name: Hit (64x32)_1
       rect:
         serializedVersion: 2
-        x: 79
+        x: 64
         y: 0
-        width: 42
-        height: 25
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Hit (64x32)_2
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 0
-        width: 40
-        height: 27
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Hit (64x32)_3
       rect:
         serializedVersion: 2
-        x: 209
+        x: 192
         y: 0
-        width: 38
-        height: 27
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Hit (64x32)_4
       rect:
         serializedVersion: 2
-        x: 273
+        x: 256
         y: 0
-        width: 39
-        height: 28
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 61c276d9bd8bdc54ca9250a6e47f5123
     internalID: 0
     vertices: []
     indices: 

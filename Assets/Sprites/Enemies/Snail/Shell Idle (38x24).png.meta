@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -118,10 +118,10 @@ TextureImporter:
       name: Shell Idle (38x24)_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 25
-        height: 21
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: Shell Idle (38x24)_1
       rect:
         serializedVersion: 2
-        x: 47
+        x: 38
         y: 0
-        width: 23
-        height: 22
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Shell Idle (38x24)_2
       rect:
         serializedVersion: 2
-        x: 85
+        x: 76
         y: 0
-        width: 23
-        height: 22
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Shell Idle (38x24)_3
       rect:
         serializedVersion: 2
-        x: 122
+        x: 114
         y: 0
-        width: 25
-        height: 21
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: Shell Idle (38x24)_4
       rect:
         serializedVersion: 2
-        x: 159
+        x: 152
         y: 0
-        width: 27
-        height: 20
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: Shell Idle (38x24)_5
       rect:
         serializedVersion: 2
-        x: 197
+        x: 190
         y: 0
-        width: 27
-        height: 20
+        width: 38
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5cd7fb43485c9024d89c1ffd19bebe9e
     internalID: 0
     vertices: []
     indices: 

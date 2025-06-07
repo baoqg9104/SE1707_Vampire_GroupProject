@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,9 +119,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 0
         width: 52
-        height: 52
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,9 +140,9 @@ TextureImporter:
       name: Idle 1 (52x54)_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 52
         y: 0
-        width: 106
+        width: 52
         height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Idle 1 (52x54)_2
       rect:
         serializedVersion: 2
-        x: 156
-        y: 1
+        x: 104
+        y: 0
         width: 52
-        height: 53
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Idle 1 (52x54)_3
       rect:
         serializedVersion: 2
-        x: 208
-        y: 1
+        x: 156
+        y: 0
         width: 52
-        height: 52
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,9 +206,9 @@ TextureImporter:
       name: Idle 1 (52x54)_4
       rect:
         serializedVersion: 2
-        x: 259
+        x: 208
         y: 0
-        width: 106
+        width: 52
         height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: Idle 1 (52x54)_5
       rect:
         serializedVersion: 2
-        x: 364
-        y: 1
+        x: 260
+        y: 0
         width: 52
-        height: 53
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,11 +246,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Idle 1 (52x54)_6
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828bb583131203743a0da6eecab78c8f
+      internalID: -437489246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle 1 (52x54)_7
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 0
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3762c1e9d3bc0834db897d17aa14182a
+      internalID: -653186695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aa206ce233bac19499592d4c44ac2989
     internalID: 0
     vertices: []
     indices: 
@@ -266,6 +310,8 @@ TextureImporter:
       Idle 1 (52x54)_3: -7153243832339893008
       Idle 1 (52x54)_4: -2470280352926481607
       Idle 1 (52x54)_5: 1869093196601225284
+      Idle 1 (52x54)_6: -437489246
+      Idle 1 (52x54)_7: -653186695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
