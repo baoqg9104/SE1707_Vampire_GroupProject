@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Icon_Small_WhiteOutline_Music_0: 6471446212275345356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
