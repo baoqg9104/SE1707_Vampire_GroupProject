@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PremadeButtons_XWhiteOutline_0: 7222374221740418566
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
