@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,7 +139,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,9 +159,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 1
+        y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,9 +181,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 76
-        y: 1
+        y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,7 +227,7 @@ TextureImporter:
         x: 152
         y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_5
       rect:
         serializedVersion: 2
-        x: 189
+        x: 190
         y: 0
-        width: 78
-        height: 31
+        width: 38
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_6
       rect:
         serializedVersion: 2
-        x: 266
+        x: 228
         y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,10 +290,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_7
       rect:
         serializedVersion: 2
-        x: 304
-        y: 1
+        x: 266
+        y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,10 +312,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_8
       rect:
         serializedVersion: 2
-        x: 342
-        y: 1
+        x: 304
+        y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,7 +334,7 @@ TextureImporter:
       name: Rock1_Run (38x34)_9
       rect:
         serializedVersion: 2
-        x: 380
+        x: 342
         y: 0
         width: 38
         height: 34
@@ -356,10 +356,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_10
       rect:
         serializedVersion: 2
-        x: 418
+        x: 380
         y: 0
         width: 38
-        height: 33
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: Rock1_Run (38x34)_11
       rect:
         serializedVersion: 2
-        x: 455
+        x: 418
         y: 0
-        width: 77
-        height: 31
+        width: 38
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,11 +396,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Rock1_Run (38x34)_12
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024947723356e6b4d90ca5c740125bd0
+      internalID: -1113646490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock1_Run (38x34)_13
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 0
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7aa1633a6326341befb4ea06b9140b
+      internalID: -1963561377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d6b7a7452c6210e4986e6a41151adc96
     internalID: 0
     vertices: []
     indices: 
@@ -414,6 +458,8 @@ TextureImporter:
       Rock1_Run (38x34)_1: 6785170929712538781
       Rock1_Run (38x34)_10: 2343870059448117283
       Rock1_Run (38x34)_11: 1207629505254439147
+      Rock1_Run (38x34)_12: -1113646490
+      Rock1_Run (38x34)_13: -1963561377
       Rock1_Run (38x34)_2: 3703273359453623547
       Rock1_Run (38x34)_3: -9001522325175290534
       Rock1_Run (38x34)_4: -8183051303927691493

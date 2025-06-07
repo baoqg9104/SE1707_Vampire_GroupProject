@@ -90,7 +90,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,9 +142,9 @@ TextureImporter:
       name: Rock3_Run (22x18)_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 20
+        width: 22
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -164,10 +164,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 1
-        width: 20
-        height: 17
+        x: 22
+        y: 0
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,10 +186,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_2
       rect:
         serializedVersion: 2
-        x: 45
-        y: 1
-        width: 20
-        height: 17
+        x: 44
+        y: 0
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,9 +208,9 @@ TextureImporter:
       name: Rock3_Run (22x18)_3
       rect:
         serializedVersion: 2
-        x: 67
+        x: 66
         y: 0
-        width: 20
+        width: 22
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -230,10 +230,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_4
       rect:
         serializedVersion: 2
-        x: 89
+        x: 88
         y: 0
-        width: 20
-        height: 17
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,7 +255,7 @@ TextureImporter:
         x: 110
         y: 0
         width: 22
-        height: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,7 +277,7 @@ TextureImporter:
         x: 132
         y: 0
         width: 22
-        height: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,9 +296,9 @@ TextureImporter:
       name: Rock3_Run (22x18)_7
       rect:
         serializedVersion: 2
-        x: 155
+        x: 154
         y: 0
-        width: 20
+        width: 22
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -318,10 +318,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_8
       rect:
         serializedVersion: 2
-        x: 177
-        y: 1
-        width: 20
-        height: 17
+        x: 176
+        y: 0
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +340,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_9
       rect:
         serializedVersion: 2
-        x: 199
-        y: 1
-        width: 20
-        height: 17
+        x: 198
+        y: 0
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,9 +362,9 @@ TextureImporter:
       name: Rock3_Run (22x18)_10
       rect:
         serializedVersion: 2
-        x: 221
+        x: 220
         y: 0
-        width: 20
+        width: 22
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -384,10 +384,10 @@ TextureImporter:
       name: Rock3_Run (22x18)_11
       rect:
         serializedVersion: 2
-        x: 243
+        x: 242
         y: 0
-        width: 20
-        height: 17
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,7 +409,7 @@ TextureImporter:
         x: 264
         y: 0
         width: 22
-        height: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,7 +431,7 @@ TextureImporter:
         x: 286
         y: 0
         width: 22
-        height: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,7 +450,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 81c9401c5d53ce74995c411d90b45ca6
     internalID: 0
     vertices: []
     indices: 
