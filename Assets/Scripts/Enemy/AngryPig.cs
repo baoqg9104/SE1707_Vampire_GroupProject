@@ -1,129 +1,187 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AngryPig : MonoBehaviour
 {
-    public enum State { Idle, Walk, Run, Hit1, Hit2 }
-    public State currentState = State.Idle;
+    [Header("Movement Settings")]
+    public float walkSpeed = 2f;
+    public float runSpeed = 4f;
+    public float idleTimeMin = 1f;
+    public float idleTimeMax = 3f;
+    public Transform leftBound;
+    public Transform rightBound;
 
-    public float walkSpeed = 1.5f;
-    public float runSpeed = 3f;
-    public float detectionRange = 5f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    private Animator animator;
-    public int maxHealth = 2;
+    [Header("Animation")]
+    public Animator animator;
 
-    private int currentHealth;
     private Rigidbody2D rb;
-    private Transform player;
-    private bool facingRight = true;
-    private bool isGrounded;
+
+    private bool movingRight = true;
+    private bool isIdle = false;
+    private bool isHitOnce = false;
+    private bool isDead = false;
+    private float idleTimer = 0f;
+    private float currentSpeed;
 
     void Start()
     {
+        transform.position = rightBound.position;
+        movingRight = false;
+        currentSpeed = walkSpeed;
+        animator.Play("Walk");
         rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (isDead) return;
 
-        switch (currentState)
+        if (isHitOnce)
         {
-            case State.Idle:
-                animator.Play("Idle");
-                if (distanceToPlayer < detectionRange)
-                {
-                    currentState = State.Walk;
-                }
-                break;
-            case State.Walk:
-                animator.Play("Walk");
-                Move(walkSpeed);
-                if (distanceToPlayer >= detectionRange)
-                {
-                    currentState = State.Idle;
-                }
-                break;
-            case State.Run:
-                animator.Play("Run");
-                Move(runSpeed);
-                break;
-            case State.Hit1:
-                animator.Play("Hit1");
-                break;
-            case State.Hit2:
-                animator.Play("Hit2");
-                break;
+            currentSpeed = runSpeed;
+        }
+        else
+        {
+            currentSpeed = walkSpeed;
+        }
+
+        if (isIdle)
+        {
+            // Xử lý thời gian idle
+            idleTimer -= Time.deltaTime;
+            if (idleTimer <= 0f)
+            {
+                isIdle = false;
+                animator.Play(isHitOnce ? "Run" : "Walk");
+            }
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Dừng di chuyển khi idle
+            return;
+        }
+
+        // Di chuyển
+        float moveDirection = movingRight ? 1 : -1;
+        rb.linearVelocity = new Vector2(moveDirection * currentSpeed, rb.linearVelocity.y);
+
+        // Kiểm tra biên
+        if (movingRight && transform.position.x >= rightBound.position.x)
+        {
+            ReachedBound();
+        }
+        else if (!movingRight && transform.position.x <= leftBound.position.x)
+        {
+            ReachedBound();
         }
     }
 
-    void Move(float speed)
+    void ReachedBound()
     {
-        if (!isGrounded) return;
-        rb.linearVelocity = new Vector2((facingRight ? 1 : -1) * speed, rb.linearVelocity.y);
-        // Check for wall or edge
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.2f, groundLayer);
-        if (!groundInfo.collider)
+        if (isHitOnce)
         {
-            Flip();
+            // Nếu đã bị đánh thì không idle, quay đầu ngay
+            movingRight = !movingRight;
+            FlipSprite();
+        }
+        else
+        {
+            // Chưa bị đánh thì idle một lúc
+            isIdle = true;
+            idleTimer = Random.Range(idleTimeMin, idleTimeMax);
+            animator.Play("Idle");
+
+            // Sau khi idle xong mới quay đầu
+            movingRight = !movingRight;
+            FlipSprite();
         }
     }
 
-    void Flip()
+    void FlipSprite()
     {
-        facingRight = !facingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
     }
 
-    public void OnHitByPlayer()
+    public void TakeHit()
     {
-        if (currentHealth == 2)
+        if (isDead) return;
+
+        if (!isHitOnce)
         {
-            currentState = State.Hit1;
-            currentHealth--;
-            Invoke(nameof(EnterRunState), 0.5f);
+            // Bị đánh lần đầu
+            isHitOnce = true;
+            currentSpeed = runSpeed;
+            animator.Play("Hit1");
+            // Sau khi hit animation xong thì chạy
+            Invoke("PlayRunAfterHit", 0.5f);
         }
-        else if (currentHealth == 1)
+        else
         {
-            currentState = State.Hit2;
-            currentHealth--;
-            Invoke(nameof(DestroyPig), 0.5f);
+            // Bị đánh lần 2 - chết
+            isDead = true;
+            animator.Play("Hit2");
+            // Sau khi hit animation xong thì biến mất
+            Invoke("Die", 0.5f);
         }
     }
 
-    void EnterRunState()
+    void PlayRunAfterHit()
     {
-        currentState = State.Run;
+        if (!isDead)
+        {
+            animator.Play("Run");
+        }
     }
 
-    void DestroyPig()
+    void Die()
     {
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // Gọi khi player tấn công enemy
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            // Kiểm tra nếu player nhảy lên đầu
-            if (collision.contacts[0].normal.y > 0.5f)
+            if (IsPlayerAbove(other.gameObject.transform))
             {
-                OnHitByPlayer();
-                // Đẩy player lên
-                Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
-                if (playerRb) playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 10f);
+                TakeHit();
+
+                // Thêm lực đẩy player lên khi giẫm lên enemy
+                Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();
+                if (playerRb != null)
+                {
+                    playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 0);
+                    playerRb.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
+                }
             }
             else
             {
-                // Có thể gây sát thương cho player ở đây nếu muốn
+                // Player bị hit nếu không nhảy lên đầu enemy
+                var playerScript = other.gameObject.GetComponent<PlayerController>(); // Đổi PlayerController thành script player của bạn
+                if (playerScript != null)
+                {
+                    playerScript.Hit();
+                }
+
+                // Thêm lực đẩy lùi cho player
+                Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();
+                if (playerRb != null)
+                {
+                    float pushDirection = (other.transform.position.x < transform.position.x) ? -1f : 1f;
+                    float pushForce = 10f; // Có thể điều chỉnh lực này
+                    playerRb.AddForce(new Vector2(pushDirection * pushForce, 5f), ForceMode2D.Impulse);
+                }
             }
         }
+    }
+
+    bool IsPlayerAbove(Transform player)
+    {
+        // Tính toán vị trí tương đối
+        float playerBottom = player.position.y - player.GetComponent<Collider2D>().bounds.extents.y;
+        float enemyTop = transform.position.y + GetComponent<Collider2D>().bounds.extents.y;
+
+        // Kiểm tra player có đang ở phía trên enemy không
+        return playerBottom > enemyTop;
     }
 }

@@ -4,9 +4,9 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
-    public float jumpForce = 12f;
-    public int maxJumps = 2;
+    private float moveSpeed = 5f;
+    private float jumpForce = 12f;
+    private int maxJumps = 2;
 
     [Header("Checks")]
     public Transform groundCheck;
@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.parent = collision.transform;
+            moveSpeed = 10f;
         }
         else if (collision.gameObject.CompareTag("SpikeBall"))
         {
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.parent = null;
+            moveSpeed = 5f; // Reset speed when leaving the platform
         }
     }
 }

@@ -103,10 +103,10 @@ TextureImporter:
       name: Checkpoint (No Flag)_0
       rect:
         serializedVersion: 2
-        x: 18
+        x: 0
         y: 0
-        width: 11
-        height: 47
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ed6e7e1911960f9479f4d834ffcacf16
     internalID: 0
     vertices: []
     indices: 
