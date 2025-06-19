@@ -113,18 +113,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.parent = collision.transform;
         }
-        else if (collision.gameObject.CompareTag("SpikeBall"))
+        else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn"))
         {
             Vector2 pushDir = (transform.position - collision.transform.position).normalized;
             rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
             Hit();
         }
-        else if (collision.gameObject.CompareTag("Spike"))
-        {
-            // Lực đẩy mạnh hơn và hướng thẳng đứng lên trên
-            rb.linearVelocity = new Vector2(0, 15f);
-            Hit();
-        }
+         
     }
 
     void OnCollisionExit2D(Collision2D collision)
