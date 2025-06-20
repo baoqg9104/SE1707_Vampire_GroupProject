@@ -4,9 +4,9 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
-    public float jumpForce = 12f;
-    public int maxJumps = 2;
+    private float moveSpeed = 5f;
+    private float jumpForce = 12f;
+    private int maxJumps = 2;
 
     [Header("Checks")]
     public Transform groundCheck;
@@ -112,19 +112,15 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.parent = collision.transform;
+            moveSpeed = 10f;
         }
-        else if (collision.gameObject.CompareTag("SpikeBall"))
+        else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn"))
         {
             Vector2 pushDir = (transform.position - collision.transform.position).normalized;
             rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
             Hit();
         }
-        else if (collision.gameObject.CompareTag("Spike"))
-        {
-            // Lực đẩy mạnh hơn và hướng thẳng đứng lên trên
-            rb.linearVelocity = new Vector2(0, 15f);
-            Hit();
-        }
+         
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -132,6 +128,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.parent = null;
+            moveSpeed = 5f; // Reset speed when leaving the platform
         }
     }
 }
