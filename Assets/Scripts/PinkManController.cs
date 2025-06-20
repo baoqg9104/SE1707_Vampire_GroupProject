@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PinkManController : MonoBehaviour
 {
@@ -40,6 +40,10 @@ public class PinkManController : MonoBehaviour
     float wallJumpTime = 0.2f;
     float wallJumpTimer;
     public Vector2 wallJumpForce = new Vector2(10f, 10f);
+
+    [Header("Gravity Inversion")]
+    public bool isGravityInverted = false;
+
 
     void Awake()
     {
@@ -136,16 +140,31 @@ public class PinkManController : MonoBehaviour
 
     void Gravity()
     {
-        if (rb.linearVelocity.y < 0)
+        if ((rb.linearVelocity.y < 0 && !isGravityInverted) || (rb.linearVelocity.y > 0 && isGravityInverted))
         {
-            rb.gravityScale = baseGravity * fallMultiplier;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+            rb.gravityScale = Mathf.Abs(baseGravity) * fallMultiplier * (isGravityInverted ? -1 : 1);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, isGravityInverted ? maxFallSpeed : -maxFallSpeed, isGravityInverted ? float.MaxValue : 0));
         }
         else
         {
             rb.gravityScale = baseGravity;
         }
     }
+
+    public void SetGravityInverted(bool inverted)
+    {
+        isGravityInverted = inverted;
+
+        // Đảo hướng trọng lực
+        baseGravity = Mathf.Abs(baseGravity) * (inverted ? -1 : 1);
+        jumpForce = Mathf.Abs(jumpForce) * (inverted ? -1 : 1);
+
+        // Lật ngược player trên trục Y
+        Vector3 scale = transform.localScale;
+        scale.y = Mathf.Abs(scale.y) * (inverted ? -1 : 1);
+        transform.localScale = scale;
+    }
+
 
     void GroundCheck()
     {
@@ -182,6 +201,21 @@ public class PinkManController : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Fruit"))
+        {
+            // Ví dụ: hủy trái cây
+            Destroy(collision.gameObject);
+
+            // Có thể thêm điểm, hiệu ứng, âm thanh tại đây
+            Debug.Log("Collected a fruit!");
+
+            // Ví dụ: thêm điểm (nếu có GameManager)
+            // GameManager.instance.AddScore(1);
         }
     }
 
