@@ -9,6 +9,7 @@ TagManager:
   - SpikeBall
   - Saw
   - Thorn
+  - Ground
   layers:
   - Default
   - TransparentFX

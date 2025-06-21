@@ -19,20 +19,19 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             Debug.Log("Current Health: " + currentHealth);
-
             anim.SetTrigger("hurt");
-         }
+        }
         else
         {
-            if (!dead)
+            if (!dead && currentHealth == 0)
             {
                 anim.SetTrigger("die");
-
-                GetComponent<PlayerController>().enabled = false; // Disable player controller on death}
+                GetComponent<PlayerController>().enabled = false; // Disable player controller on death
                 dead = true;
+
+                 
             }
         }
-
     }
     private void Update()
     {
