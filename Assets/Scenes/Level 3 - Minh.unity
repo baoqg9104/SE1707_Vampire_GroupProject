@@ -1128,7 +1128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  damage: 0.5
 --- !u!95 &83786786
 Animator:
   serializedVersion: 7
@@ -1246,7 +1247,7 @@ SpriteRenderer:
   m_SortingLayerID: 700295613
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6367560908665664636, guid: e0d973d353eeb404b940d2da20fbe973, type: 3}
+  m_Sprite: {fileID: 5583492486709806376, guid: 0fadfbfdbcff42f4dbc32c99055900cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1266,7 +1267,7 @@ Transform:
   m_GameObject: {fileID: 83786782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: -0.3, z: 0}
+  m_LocalPosition: {x: 45.6, y: 0.4, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6860,7 +6861,6 @@ MonoBehaviour:
   speed: 1.5
   pointA: {fileID: 1798986829}
   pointB: {fileID: 249275914}
-  damage: 1
 --- !u!1 &568023490
 GameObject:
   m_ObjectHideFlags: 0
@@ -9716,7 +9716,7 @@ Transform:
   m_GameObject: {fileID: 794443478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: -0.3, z: -10}
+  m_LocalPosition: {x: 45.6, y: 0.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11552,7 +11552,6 @@ MonoBehaviour:
   speed: 1.5
   pointA: {fileID: 312079982}
   pointB: {fileID: 827755330}
-  damage: 0.5
 --- !u!1 &977625243
 GameObject:
   m_ObjectHideFlags: 0
@@ -15394,7 +15393,7 @@ GameObject:
   - component: {fileID: 1361917815}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96653,7 +96652,6 @@ MonoBehaviour:
   speed: 2
   pointA: {fileID: 1296687849}
   pointB: {fileID: 585737308}
-  damage: 0
 --- !u!1 &1720844957
 GameObject:
   m_ObjectHideFlags: 0
@@ -99699,7 +99697,6 @@ MonoBehaviour:
   speed: 2
   pointA: {fileID: 443996421}
   pointB: {fileID: 165549073}
-  damage: 0
 --- !u!1 &1955040395
 GameObject:
   m_ObjectHideFlags: 0

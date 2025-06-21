@@ -9,8 +9,10 @@ TagManager:
   - SpikeBall
   - Saw
   - Thorn
+  - Ground
+ 
   - Fruit
-  layers:
+   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
