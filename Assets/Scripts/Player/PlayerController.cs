@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private int jumpCount;
     private bool isHit = false;
     private bool wasGrounded;
+    [SerializeField] private double damage;
+
+
 
     void Start()
     {
@@ -98,6 +101,12 @@ public class PlayerController : MonoBehaviour
             isHit = true;
             animator.Play("Hit");
             StartCoroutine(HitRecover());
+            // Call TakeDamage from Health class
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage((float)damage); // Assuming 1 is the damage amount
+            }
         }
     }
 
@@ -116,6 +125,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn"))
         {
+
             Vector2 pushDir = (transform.position - collision.transform.position).normalized;
             rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
             Hit();
@@ -131,4 +141,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 5f; // Reset speed when leaving the platform
         }
     }
+
+     
+
 }
