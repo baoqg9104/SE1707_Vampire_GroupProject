@@ -10,7 +10,9 @@ TagManager:
   - Saw
   - Thorn
   - Ground
-  layers:
+ 
+  - Fruit
+   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - Ground
   - Wall
-  - 
+  - Enemy
   - 
   - 
   - 
