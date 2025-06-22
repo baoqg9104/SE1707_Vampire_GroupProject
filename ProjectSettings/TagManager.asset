@@ -10,9 +10,8 @@ TagManager:
   - Saw
   - Thorn
   - Ground
- 
   - Fruit
-   layers:
+  layers:
   - Default
   - TransparentFX
   - Ignore Raycast
@@ -22,7 +21,7 @@ TagManager:
   - Ground
   - Wall
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
@@ -47,19 +46,19 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 6628497
+    uniqueID: 3953950055
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 707792655
+    uniqueID: 657357463
     locked: 0
   - name: Enemy
-    uniqueID: 3669150037
+    uniqueID: 870266761
     locked: 0
   - name: Player
-    uniqueID: 700295613
+    uniqueID: 3673222019
     locked: 0
   m_RenderingLayers:
   - Default
