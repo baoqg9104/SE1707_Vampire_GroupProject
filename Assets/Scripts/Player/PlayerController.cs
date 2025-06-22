@@ -69,10 +69,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Animation state
-        if (isHit)
-        {
-            animator.Play("Hit");
-        }
+        //if (isHit)
+        //{
+        //    animator.Play("Hit");
+        //}
         else if (!isGrounded && rb.linearVelocity.y > 0)
         {
             if (jumpCount == maxJumps - 1)
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (!isHit)
         {
             isHit = true;
-            animator.Play("Hit");
+            //animator.Play("Hit");
             StartCoroutine(HitRecover());
             // Call TakeDamage from Health class
             Health health = GetComponent<Health>();
