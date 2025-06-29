@@ -11,6 +11,9 @@ TagManager:
   - Thorn
   - Ground
   - Fruit
+  - Banana
+  - Apple
+  - GoldenApple
   layers:
   - Default
   - TransparentFX
