@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private double damage;
 
 
+    ///////Score system////////
+    public ScoreManager cm;
+
+
 
     void Start()
     {
@@ -143,6 +147,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     
+    void OnTriggerEnter2D(Collider2D items)
+    {
+        if (items.gameObject.CompareTag("Apple"))
+        {
+            cm.scoreCount += 1;
+        }
+        if (items.gameObject.CompareTag("Banana"))
+        {
+             cm.scoreCount += 2;
+        }
+        if (items.gameObject.CompareTag("WaterMelon"))
+        {
+            cm.scoreCount += 3;
+        }
+        if (items.gameObject.CompareTag("GoldenApple"))
+        {
+            cm.scoreCount += 5;
+        }
+    }
+
+
 
 }

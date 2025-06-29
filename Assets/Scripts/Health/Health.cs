@@ -33,14 +33,20 @@ public class Health : MonoBehaviour
             }
         }
     }
-    private void Update()
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        TakeDamage((float)0.5);
+    //    }
+
+
+    //}
+
+    public void Heal(float _healAmount)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage((float)0.5);
-        }
-
-
+        currentHealth = Mathf.Clamp(currentHealth + _healAmount, 0, startingHealth);
+        Debug.Log("Current Health: " + currentHealth);
     }
 }
 
