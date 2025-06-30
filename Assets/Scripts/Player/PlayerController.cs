@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn"))
         {
- 
+            Debug.Log("Player hit by hazard: " + collision.gameObject.name);
             Vector2 pushDir = (transform.position - collision.transform.position).normalized;
             rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
 

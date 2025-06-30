@@ -21,15 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 7062579536633761780, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+      value: {fileID: -953560442851353963, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - time: 0.083333336
-      value: {fileID: -3450976776972242761, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+      value: {fileID: -3450976776972242761, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - time: 0.16666667
-      value: {fileID: -953560442851353963, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+      value: {fileID: 8480664182131228983, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - time: 0.25
-      value: {fileID: 8480664182131228983, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+      value: {fileID: 7062579536633761780, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - time: 0.33333334
-      value: {fileID: -1675461080110260169, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+      value: {fileID: -1675461080110260169, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - time: 0.41666666
       value: {fileID: 7167584040609486739, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
     - time: 0.5
@@ -92,11 +92,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 7062579536633761780, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
-    - {fileID: -3450976776972242761, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
-    - {fileID: -953560442851353963, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
-    - {fileID: 8480664182131228983, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
-    - {fileID: -1675461080110260169, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
+    - {fileID: -953560442851353963, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
+    - {fileID: -3450976776972242761, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
+    - {fileID: 8480664182131228983, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
+    - {fileID: 7062579536633761780, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
+    - {fileID: -1675461080110260169, guid: 599275faf0f29de458a47dd8263bc4c5, type: 3}
     - {fileID: 7167584040609486739, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
     - {fileID: 6868122594974341346, guid: 025a25db01d70d247ad943312599ef5c, type: 3}
     - {fileID: -4241635684806205602, guid: 3e8ea2bf9834cad429e5704cb6749883, type: 3}
