@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PinkManController : MonoBehaviour
 {
@@ -43,6 +44,13 @@ public class PinkManController : MonoBehaviour
 
     [Header("Gravity Inversion")]
     public bool isGravityInverted = false;
+
+    [Header("Score System")]
+    public ScoreManager cm;
+
+    [Header("Damage System")]
+    private bool isHit = false;
+    [SerializeField] private float damage = 1f;
 
 
     void Awake()
@@ -210,12 +218,45 @@ public class PinkManController : MonoBehaviour
         {
             // Ví dụ: hủy trái cây
             Destroy(collision.gameObject);
+            cm.scoreCount += 1;
 
             // Có thể thêm điểm, hiệu ứng, âm thanh tại đây
             Debug.Log("Collected a fruit!");
 
             // Ví dụ: thêm điểm (nếu có GameManager)
             // GameManager.instance.AddScore(1);
+        }
+    }
+
+    public void Hit()
+    {
+        if (!isHit)
+        {
+            isHit = true;
+            StartCoroutine(HitRecover());
+
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+        }
+    }
+
+    private IEnumerator HitRecover()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isHit = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("SpikeBall") ||
+            collision.gameObject.CompareTag("Saw") ||
+            collision.gameObject.CompareTag("Thorn"))
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(13f, -maxFallSpeed, maxFallSpeed));
+            Hit(); // mất máu
         }
     }
 
