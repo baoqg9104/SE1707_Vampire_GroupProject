@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
             transform.parent = collision.transform;
             moveSpeed = 10f;
         }
-        else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn"))
+        else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn") || collision.gameObject.CompareTag("Spike"))
         {
             Vector2 pushDir = (transform.position - collision.transform.position).normalized;
             rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
