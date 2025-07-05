@@ -14,11 +14,12 @@ TagManager:
   - Banana
   - Apple
   - GoldenApple
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Ground
