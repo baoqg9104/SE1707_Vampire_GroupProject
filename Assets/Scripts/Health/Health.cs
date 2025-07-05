@@ -26,7 +26,10 @@ public class Health : MonoBehaviour
             if (!dead && currentHealth == 0)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerController>().enabled = false; // Disable player controller on death
+                if (GetComponent<PlayerController>() != null)
+                    GetComponent<PlayerController>().enabled = false; // Disable player controller on death
+                if (GetComponent<PinkManController>() != null)
+                    GetComponent<PinkManController>().enabled = false;
                 dead = true;
 
                  
