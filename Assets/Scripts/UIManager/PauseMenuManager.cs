@@ -7,7 +7,7 @@ public class PauseMenuManager : MonoBehaviour
     public static PauseMenuManager Instance;
 
     // public Button pauseButton;
-    // public Button restartButton;
+    public Button restartButton;
     public Button mainMenuButton;
     public Button quitButton;
     public Button resumeButton;
@@ -33,7 +33,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         // if (pauseButton != null) pauseButton.onClick.AddListener(PauseGame);
         if (resumeButton != null) resumeButton.onClick.AddListener(ResumeGame);
-        // if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
+        if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
         if (mainMenuButton != null) mainMenuButton.onClick.AddListener(GoToMainMenu);
         if (quitButton != null) quitButton.onClick.AddListener(QuitGame);
         if (settingsButton != null) settingsButton.onClick.AddListener(() => Settings.Instance.gameObject.SetActive(true));
@@ -74,17 +74,14 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-    // public void RestartGame()
-    // {
-    //     Time.timeScale = 1f;
-    //     if (pausePanel != null)
-    //         pausePanel.SetActive(false);
-        
-    //     if (winPanel != null)
-    //         winPanel.SetActive(false);
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
 
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    // }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void GoToMainMenu()
     {
