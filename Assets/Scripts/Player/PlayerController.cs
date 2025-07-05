@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     private int jumpCount;
     private bool isHit = false;
     private bool wasGrounded;
+    [SerializeField] private double damage;
+
+
+    ///////Score system////////
+    public ScoreManager cm;
+
+
 
     void Start()
     {
@@ -66,10 +73,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Animation state
-        if (isHit)
-        {
-            animator.Play("Hit");
-        }
+        //if (isHit)
+        //{
+        //    animator.Play("Hit");
+        //}
         else if (!isGrounded && rb.linearVelocity.y > 0)
         {
             if (jumpCount == maxJumps - 1)
@@ -96,8 +103,14 @@ public class PlayerController : MonoBehaviour
         if (!isHit)
         {
             isHit = true;
-            animator.Play("Hit");
+            //animator.Play("Hit");
             StartCoroutine(HitRecover());
+            // Call TakeDamage from Health class
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage((float)damage); // Assuming 1 is the damage amount
+            }
         }
     }
 
@@ -116,8 +129,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("SpikeBall") || collision.gameObject.CompareTag("Saw") || collision.gameObject.CompareTag("Thorn") || collision.gameObject.CompareTag("Spike"))
         {
-            Vector2 pushDir = (transform.position - collision.transform.position).normalized;
-            rb.linearVelocity = new Vector2(pushDir.x * 8f, 8f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 13f);
+
             Hit();
         }
          
@@ -131,4 +144,27 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 5f; // Reset speed when leaving the platform
         }
     }
+
+    void OnTriggerEnter2D(Collider2D items)
+    {
+        if (items.gameObject.CompareTag("Apple"))
+        {
+            cm.scoreCount += 1;
+        }
+        if (items.gameObject.CompareTag("Banana"))
+        {
+             cm.scoreCount += 2;
+        }
+        if (items.gameObject.CompareTag("WaterMelon"))
+        {
+            cm.scoreCount += 3;
+        }
+        if (items.gameObject.CompareTag("GoldenApple"))
+        {
+            cm.scoreCount += 5;
+        }
+    }
+
+
+
 }

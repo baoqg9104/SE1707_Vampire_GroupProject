@@ -7,6 +7,7 @@ public class Saw : MonoBehaviour
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
 
+
     private Vector3 targetPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,3 +32,5 @@ public class Saw : MonoBehaviour
         }
     }
 }
+
+
