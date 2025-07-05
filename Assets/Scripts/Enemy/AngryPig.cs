@@ -23,13 +23,21 @@ public class AngryPig : MonoBehaviour
     private float idleTimer = 0f;
     private float currentSpeed;
 
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Start()
     {
-        transform.position = rightBound.position;
+        if (rightBound != null)
+        {
+            transform.position = rightBound.position;
+
+        }
         movingRight = false;
         currentSpeed = walkSpeed;
         animator.Play("Walk");
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -55,6 +63,19 @@ public class AngryPig : MonoBehaviour
                 animator.Play(isHitOnce ? "Run" : "Walk");
             }
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Dừng di chuyển khi idle
+            return;
+        }
+
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component is missing on the AngryPig object.");
+            return;
+        }
+
+        // if boudary is null, do not move
+        if (leftBound == null || rightBound == null)
+        {
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 
