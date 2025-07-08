@@ -16,6 +16,7 @@ TagManager:
   - GoldenApple
   - Boss
   - WaterMelon
+  - Fireball
   layers:
   - Default
   - TransparentFX

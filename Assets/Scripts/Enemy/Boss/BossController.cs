@@ -1,10 +1,10 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class BossController : MonoBehaviour
 {
     [Header("Movement")]
-    private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed;
     private float jumpForce = 12f;
     private int maxJumps = 2;
 
@@ -21,9 +21,17 @@ public class PlayerController : MonoBehaviour
     private bool wasGrounded;
     [SerializeField] private double damage;
 
+    private float lastPlayerDirection = 0f;
+    private float targetDirection = 0f;
+    private bool isChangingDirection = false;
+
+
 
     ///////Score system////////
-    public ScoreManager cm;
+    //public ScoreManager cm;
+
+    [Header("Target")]
+    public Transform player;
 
 
 
@@ -32,6 +40,18 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpCount = maxJumps;
         animator = GetComponent<Animator>();
+
+         // Initialize directions
+        if (player != null)
+        {
+            targetDirection = Mathf.Sign(player.position.x - transform.position.x);
+            lastPlayerDirection = targetDirection;
+        }
+        else
+        {
+            targetDirection = 1f;
+            lastPlayerDirection = 1f;
+        }
     }
 
     void Update()
@@ -48,53 +68,62 @@ public class PlayerController : MonoBehaviour
         }
         wasGrounded = isGrounded;
 
-        // Lấy input di chuyển ngang mượt, luôn cập nhật vận tốc ngang theo input
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        if (moveInput != 0)
+        // Boss follows the player horizontally
+        if (player != null)
         {
-            Vector3 scale = transform.localScale;
-            scale.x = Mathf.Abs(scale.x) * (moveInput > 0 ? 1 : -1);
-            transform.localScale = scale;
-        }
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+            float playerDirection = Mathf.Sign(player.position.x - transform.position.x);
 
-        // Jump
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            if (playerDirection != 0 && playerDirection != lastPlayerDirection && !isChangingDirection)
+            {
+                StartCoroutine(DelayDirectionChange(playerDirection));
+            }
+
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * targetDirection;
+            transform.localScale = scale;
+
+            rb.linearVelocity = new Vector2(targetDirection * moveSpeed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
+
+        // Jump logic can be added here if you want the boss to jump
+
+        if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpCount = maxJumps - 1;
-            animator.Play("Jump");
+            animator.Play("Boss");
         }
-        else if (Input.GetKeyDown(KeyCode.W) && jumpCount > 0)
+        else if (jumpCount > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpCount--;
-            animator.Play("DoubleJump");
+            animator.Play("Boss");
         }
-
         // Animation state
         //if (isHit)
-        //{
         //    animator.Play("Hit");
-        //}
-        else if (!isGrounded && rb.linearVelocity.y > 0)
+        if (!isGrounded && rb.linearVelocity.y > 0)
         {
             if (jumpCount == maxJumps - 1)
-                animator.Play("Jump");
+                animator.Play("Boss");
             else
-                animator.Play("DoubleJump");
+                animator.Play("Boss");
         }
         else if (!isGrounded && rb.linearVelocity.y < 0)
         {
-            animator.Play("Fall");
+            animator.Play("Boss");
         }
         else if (isGrounded && Mathf.Abs(rb.linearVelocity.x) > 0.1f)
         {
-            animator.Play("Run");
+            animator.Play("Boss");
         }
         else if (isGrounded)
         {
-            animator.Play("Idle");
+            animator.Play("Boss");
         }
     }
 
@@ -133,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
             Hit();
         }
-         
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -144,31 +173,18 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 5f; // Reset speed when leaving the platform
         }
     }
+    
 
-    void OnTriggerEnter2D(Collider2D items)
+    private IEnumerator DelayDirectionChange(float newDirection)
     {
-        if (items.gameObject.CompareTag("Apple"))
-        {
-            cm.scoreCount += 1;
-        }
-        if (items.gameObject.CompareTag("Banana"))
-        {
-            cm.scoreCount += 2;
-        }
-        if (items.gameObject.CompareTag("WaterMelon"))
-        {
-            cm.scoreCount += 3;
-        }
-        if (items.gameObject.CompareTag("GoldenApple"))
-        {
-            cm.scoreCount += 5;
-        }
-        if (items.gameObject.CompareTag("Fireball"))
-    {
-        animator.Play("Hit"); // Play Hit animation immediately
-        Hit();
+        isChangingDirection = true;
+        yield return new WaitForSeconds(1f);
+        targetDirection = newDirection;
+        lastPlayerDirection = newDirection;
+        isChangingDirection = false;
     }
-    }
+
+     
 
 
 
