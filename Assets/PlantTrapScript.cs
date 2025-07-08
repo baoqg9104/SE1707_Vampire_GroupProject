@@ -13,8 +13,8 @@ public class PlantTrapScript : MonoBehaviour
     {
         cooldownTimer = 0;
 
-        fireballs[FindFireball()].transform.position = firePoint.position;
-        fireballs[FindFireball()].GetComponent<EnemyProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        //fireballs[FindFireball()].transform.position = firePoint.position;
+        //fireballs[FindFireball()].GetComponent<EnemyProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
     }
     private int FindFireball()
     {
