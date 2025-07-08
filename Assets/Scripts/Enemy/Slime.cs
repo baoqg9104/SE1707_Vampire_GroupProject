@@ -1,31 +1,20 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AngryPig : MonoBehaviour
+public class Slime : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float walkSpeed = 2f;
     public float runSpeed = 4f;
-    public float idleTimeMin = 1f;
-    public float idleTimeMax = 3f;
     public Transform leftBound;
     public Transform rightBound;
-
-    [Header("Animation")]
-    public Animator animator;
+    private Animator animator;
 
     private Rigidbody2D rb;
-
     private bool movingRight = true;
-    private bool isIdle = false;
-    private bool isHitOnce = false;
     private bool isDead = false;
-    private float idleTimer = 0f;
-    private float currentSpeed;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -35,52 +24,16 @@ public class AngryPig : MonoBehaviour
             transform.position = rightBound.position;
         }
         movingRight = false;
-        currentSpeed = walkSpeed;
-        animator.Play("Walk");
+        animator.Play("Run");
     }
 
     void Update()
     {
         if (isDead) return;
 
-        if (isHitOnce)
-        {
-            currentSpeed = runSpeed;
-        }
-        else
-        {
-            currentSpeed = walkSpeed;
-        }
-
-        if (isIdle)
-        {
-            // Xử lý thời gian idle
-            idleTimer -= Time.deltaTime;
-            if (idleTimer <= 0f)
-            {
-                isIdle = false;
-                animator.Play(isHitOnce ? "Run" : "Walk");
-            }
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Dừng di chuyển khi idle
-            return;
-        }
-
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody2D component is missing on the AngryPig object.");
-            return;
-        }
-
-        // if boudary is null, do not move
-        if (leftBound == null || rightBound == null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            return;
-        }
-
         // Di chuyển
         float moveDirection = movingRight ? 1 : -1;
-        rb.linearVelocity = new Vector2(moveDirection * currentSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveDirection * runSpeed, rb.linearVelocity.y);
 
         // Kiểm tra biên
         if (movingRight && transform.position.x >= rightBound.position.x)
@@ -95,23 +48,8 @@ public class AngryPig : MonoBehaviour
 
     void ReachedBound()
     {
-        if (isHitOnce)
-        {
-            // Nếu đã bị đánh thì không idle, quay đầu ngay
-            movingRight = !movingRight;
-            FlipSprite();
-        }
-        else
-        {
-            // Chưa bị đánh thì idle một lúc
-            isIdle = true;
-            idleTimer = Random.Range(idleTimeMin, idleTimeMax);
-            animator.Play("Idle");
-
-            // Sau khi idle xong mới quay đầu
-            movingRight = !movingRight;
-            FlipSprite();
-        }
+        movingRight = !movingRight;
+        FlipSprite();
     }
 
     void FlipSprite()
@@ -125,31 +63,11 @@ public class AngryPig : MonoBehaviour
     {
         if (isDead) return;
 
-        if (!isHitOnce)
-        {
-            // Bị đánh lần đầu
-            isHitOnce = true;
-            currentSpeed = runSpeed;
-            animator.Play("Hit1");
-            // Sau khi hit animation xong thì chạy
-            Invoke("PlayRunAfterHit", 0.5f);
-        }
-        else
-        {
-            // Bị đánh lần 2 - chết
-            isDead = true;
-            animator.Play("Hit2");
-            // Sau khi hit animation xong thì biến mất
-            Invoke("Die", 0.5f);
-        }
-    }
+        isDead = true;
+        animator.Play("Hit");
 
-    void PlayRunAfterHit()
-    {
-        if (!isDead)
-        {
-            animator.Play("Run");
-        }
+        // Sau khi hit animation xong thì biến mất
+        Invoke("Die", 0.5f);
     }
 
     void Die()

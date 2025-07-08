@@ -5,21 +5,40 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Button playButton;
+    public Button tutorialButton;
     public Button settingsButton;
     public Button exitButton;
-    // public GameObject selectLevelPanel;
+    public GameObject optionsPanel;
+    public Button newGameButton;
+    public Button continueButton;
+    public Button backButton;
 
     void Start()
     {
         playButton.onClick.AddListener(OnPlayClicked);
+        tutorialButton.onClick.AddListener(() => SceneManager.LoadScene("Tutorial"));
         settingsButton.onClick.AddListener(OnSettingsClicked);
         exitButton.onClick.AddListener(OnExitClicked);
+        newGameButton.onClick.AddListener(() => SceneManager.LoadScene("Level1"));
+        continueButton.onClick.AddListener(OnContinueClicked);
+        backButton.onClick.AddListener(OnBackClicked);
+
+        optionsPanel.SetActive(false);
     }
 
     void OnPlayClicked()
     {
-        // selectLevelPanel.SetActive(true);
-        SceneManager.LoadScene("Level 1 - Bao");
+        optionsPanel.SetActive(true);
+    }
+
+    void OnContinueClicked()
+    {
+        Debug.Log("Continue button clicked");
+    }
+
+    void OnBackClicked()
+    {
+        optionsPanel.SetActive(false);
     }
 
     void OnSettingsClicked()
