@@ -15,6 +15,7 @@ TagManager:
   - Apple
   - GoldenApple
   - WaterMelon
+  - KillZone
   layers:
   - Default
   - TransparentFX

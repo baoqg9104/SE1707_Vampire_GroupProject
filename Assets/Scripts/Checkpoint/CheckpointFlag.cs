@@ -17,6 +17,7 @@ public class CheckpointFlag : MonoBehaviour
         {
             isActivated = true;
             animator.Play("Out");
+            other.GetComponent<PlayerRespawn>().SetCheckpoint(transform.position);
         }
     }
 
