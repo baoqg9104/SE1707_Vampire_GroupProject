@@ -4,12 +4,14 @@ public class FatBirdController : MonoBehaviour
 {
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public GameObject feedObject;
 
     private Rigidbody2D rb;
     private Animator animator;
 
     private bool isHit = false;
     private bool isGrounded = false;
+    public float force = 5f; // Lực đẩy lên khi bị hit
 
     void Start()
     {
@@ -26,10 +28,18 @@ public class FatBirdController : MonoBehaviour
 
             animator.SetBool("isFalling", !isGrounded);
             animator.SetBool("isGrounded", isGrounded);
+
+            // Rơi thẳng đứng => không trượt ngang
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+            // Biến mất khi chạm đất (nếu muốn)
+            if (isGrounded)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
-    // Gọi hàm này từ bên ngoài (ví dụ từ enemy, trigger, v.v.) để làm nó rớt
     public void TakeHit()
     {
         if (isHit) return;
@@ -37,5 +47,16 @@ public class FatBirdController : MonoBehaviour
         isHit = true;
         animator.SetTrigger("isHit");
         rb.gravityScale = 1f;
+
+        // Đẩy nhẹ lên trên và đảm bảo rơi thẳng
+        rb.linearVelocity = new Vector2(0f, force);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == feedObject)
+        {
+            TakeHit(); // Bị hit: bắt đầu rơi
+        }
     }
 }
