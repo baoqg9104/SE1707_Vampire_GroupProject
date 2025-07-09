@@ -67,8 +67,8 @@ public class PinkManController : MonoBehaviour
         HandleWallJumpTimer();
 
         horizontalMovement = 0f;
-        if (Input.GetKey(KeyCode.A)) horizontalMovement = -1f;
-        if (Input.GetKey(KeyCode.D)) horizontalMovement = 1f;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) horizontalMovement = -1f;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) horizontalMovement = 1f;
 
         if (!isWallJumping)
         {
@@ -77,7 +77,7 @@ public class PinkManController : MonoBehaviour
         }
 
         // Jump input
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             TryJump();
         }

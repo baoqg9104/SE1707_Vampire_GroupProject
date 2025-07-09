@@ -7,10 +7,12 @@ public class RadishController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float distance = 5f;
     [SerializeField] private float pauseDuration = 1.5f;
+    [SerializeField] private GameObject feedObject; // Đối tượng gây hit
 
     private Vector3 startPosition;
     private bool movingRight = true;
     private bool isPaused = false;
+    private bool isHit = false;
 
     private Animator animator;
 
@@ -22,17 +24,16 @@ public class RadishController : MonoBehaviour
 
     void Update()
     {
+        if (isHit || isPaused) return;
+
         HandleMovement();
     }
 
     void HandleMovement()
     {
-        if (isPaused) return;
-
         float leftBound = startPosition.x - distance;
         float rightBound = startPosition.x + distance;
 
-        // Play run animation
         animator.Play("Run");
 
         if (movingRight)
@@ -53,7 +54,6 @@ public class RadishController : MonoBehaviour
     {
         isPaused = true;
 
-        // Flip sprite nếu hướng thay đổi
         if (movingRight != newDirection)
         {
             Vector3 scale = transform.localScale;
@@ -63,7 +63,6 @@ public class RadishController : MonoBehaviour
 
         movingRight = newDirection;
 
-        // Animation sequence khi dừng
         animator.Play("Idle1");
         yield return new WaitForSeconds(0.5f);
 
@@ -74,8 +73,31 @@ public class RadishController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         animator.Play("Idle1");
-        yield return new WaitForSeconds(pauseDuration); // Chờ thêm một chút
+        yield return new WaitForSeconds(pauseDuration);
 
         isPaused = false;
+    }
+
+    public void TakeHit()
+    {
+        if (isHit) return;
+
+        isHit = true;
+        animator.Play("Hit");
+        StartCoroutine(DestroyAfterHit());
+    }
+
+    IEnumerator DestroyAfterHit()
+    {
+        yield return new WaitForSeconds(1.0f); // Chờ cho animation Hit kết thúc
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == feedObject)
+        {
+            TakeHit();
+        }
     }
 }
