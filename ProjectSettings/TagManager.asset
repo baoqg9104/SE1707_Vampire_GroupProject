@@ -14,21 +14,22 @@ TagManager:
   - Banana
   - Apple
   - GoldenApple
+  - Boss
   - WaterMelon
-  - KillZone
+  - Fireball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Ground
   - Wall
   - Enemy
   - Player
-  - 
-  - 
+  - Trap
+  - Boss
   - 
   - 
   - 

@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         }
         if (items.gameObject.CompareTag("Banana"))
         {
-             cm.scoreCount += 2;
+            cm.scoreCount += 2;
         }
         if (items.gameObject.CompareTag("WaterMelon"))
         {
@@ -163,6 +163,11 @@ public class PlayerController : MonoBehaviour
         {
             cm.scoreCount += 5;
         }
+        if (items.gameObject.CompareTag("Fireball"))
+    {
+        animator.Play("Hit"); // Play Hit animation immediately
+        Hit();
+    }
     }
 
 
