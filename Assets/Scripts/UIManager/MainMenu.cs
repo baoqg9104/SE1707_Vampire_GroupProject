@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
         tutorialButton.onClick.AddListener(() => SceneManager.LoadScene("Tutorial"));
         settingsButton.onClick.AddListener(OnSettingsClicked);
         exitButton.onClick.AddListener(OnExitClicked);
-        newGameButton.onClick.AddListener(() => SceneManager.LoadScene("Level1"));
+        newGameButton.onClick.AddListener(OnNewGameClicked);
         continueButton.onClick.AddListener(OnContinueClicked);
         backButton.onClick.AddListener(OnBackClicked);
 
@@ -31,9 +31,16 @@ public class MainMenu : MonoBehaviour
         optionsPanel.SetActive(true);
     }
 
+    void OnNewGameClicked()
+    {
+        PlayerPrefs.DeleteKey("LastLevel");
+        SceneManager.LoadScene("Level1");
+    }
+
     void OnContinueClicked()
     {
-        Debug.Log("Continue button clicked");
+        string lastLevel = PlayerPrefs.GetString("LastLevel", "Level1");
+        SceneManager.LoadScene(lastLevel);
     }
 
     void OnBackClicked()
