@@ -45,9 +45,4 @@ public class FallingPlatform : MonoBehaviour
         if (rb != null)
             rb.bodyType = RigidbodyType2D.Dynamic;
     }
-
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
 }

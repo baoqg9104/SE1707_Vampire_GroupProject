@@ -17,11 +17,12 @@ TagManager:
   - Boss
   - WaterMelon
   - Fireball
+  - KillZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - Ground
