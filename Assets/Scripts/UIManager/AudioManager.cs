@@ -12,11 +12,11 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Clips")]
     public AudioClip[] musicTracks;
-    public AudioClip attack1Clip;
-    public AudioClip attack2Clip;
-    public AudioClip jumpEffectClip;
-    public AudioClip collectDiamondClip;
-    public AudioClip collectPotionClip;
+    // public AudioClip attack1Clip;
+    // public AudioClip attack2Clip;
+    // public AudioClip jumpEffectClip;
+    // public AudioClip collectDiamondClip;
+    // public AudioClip collectPotionClip;
 
     private bool isMusicOn = true;
     private bool isSfxOn = true;
