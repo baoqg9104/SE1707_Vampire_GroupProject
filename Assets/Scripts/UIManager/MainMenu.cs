@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,6 +35,13 @@ public class MainMenu : MonoBehaviour
     void OnNewGameClicked()
     {
         PlayerPrefs.DeleteKey("LastLevel");
+        PlayerPrefs.DeleteKey("LevelScore_Level1");
+        PlayerPrefs.DeleteKey("LevelScore_Level2");
+        PlayerPrefs.DeleteKey("LevelScore_Level3");
+        PlayerPrefs.DeleteKey("LevelScore_Level4");
+        PlayerPrefs.DeleteKey("LevelScore_FinalBoss");
+        
+
         SceneManager.LoadScene("Level1");
     }
 
