@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public static PauseMenuManager Instance;
+    // public static PauseMenuManager Instance;
 
     // public Button pauseButton;
     public Button restartButton;
@@ -16,18 +16,20 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pausePanel;
     // public GameObject winPanel;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
+    public GameObject winPanel;
+
+    // private void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //     }
+    //     else if (Instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //         return;
+    //     }
+    // }
 
     private void Start()
     {
@@ -45,6 +47,11 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (winPanel != null && winPanel.activeSelf)
+            {
+                return; // Do not toggle pausePanel if WinPanelManager is active
+            }
+
             if (pausePanel != null && !pausePanel.activeSelf)
             {
                 PauseGame();
