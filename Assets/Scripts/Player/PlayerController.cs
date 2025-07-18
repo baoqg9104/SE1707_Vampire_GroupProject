@@ -133,11 +133,17 @@ public class PlayerController : MonoBehaviour
 
             Hit();
         }
-         
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            animator.Play("Hit"); // Play Hit animation immediately
+            Hit();
+        }
+
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.parent = null;
@@ -164,10 +170,10 @@ public class PlayerController : MonoBehaviour
             cm.scoreCount += 5;
         }
         if (items.gameObject.CompareTag("Fireball"))
-    {
-        animator.Play("Hit"); // Play Hit animation immediately
-        Hit();
-    }
+        {
+            animator.Play("Hit"); // Play Hit animation immediately
+            Hit();
+        }
     }
 
 
